@@ -1,7 +1,12 @@
+
 function setup() {
-  createCanvas(400, 400);
+  noCanvas(); // get rids of canva
 }
 
-function draw() {
-  background(220);
-}
+document.querySelector("#name").addEventListener("keyup", function(event){
+    var message = document.getElementById("#name").value;
+    message.innerHTML = "Hello" + name.value;
+
+});
+
+

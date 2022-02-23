@@ -1,0 +1,23 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+h1 {
+    padding: 25px;
+    text-align: center;
+}
+
+h4 {
+    padding: 5px;
+    text-align: center;
+}
+
+input {
+    text-align: center;
+    position: relative; 
+    margin-left: 935px;
+}
