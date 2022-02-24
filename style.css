@@ -7,6 +7,8 @@ canvas {
 }
 
 h1 {
+    position: relative;
+    margin-top: 165px;
     padding: 25px;
     text-align: center;
 }
