@@ -12,19 +12,17 @@ h1 {
 }
 
 h4 {
-    padding: 5px;
-    text-align: center;
+  padding: 5px;
+  text-align: center;
 }
 
-h5 {
-    padding: 5px;
-    text-align: center;
+h5{
+  padding: 15px;
+  text-align: center;
 }
 
-
-
-input {
-    text-align: center;
-    position: relative; 
-    margin-left: 935px;
+.input-group {
+  position: relative;
+  margin-left: 900px;
+  margin-right: 905px;
 }
