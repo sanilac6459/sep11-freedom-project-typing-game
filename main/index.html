@@ -16,12 +16,38 @@
     </head>
     <body>
         <!-- HTML -->
-        
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
-        <script src="sketch.js"></script>
+        <div>
+          <h2 class="textRandomWord">word : pie</h2>
+          <input type="text" id="word"><br><br>
+
+        </div>
+
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
         <script>
             // JS
-        
+
+
+        function randomWord() {
+          var numLetter = ["cat","snorlax","meow"]
+          for(var i = 0; i < 3; i++){
+            var num3 = Math.floor(Math.random() * numLetter.length)
+            var ranWord = numLetter[num3]
+          }
+          return ranWord;
+        }
+
+        document.querySelector(".textRandomWord").innerHTML = randomWord()
+
+        document.querySelector("#word").addEventListener("keyup",function(event){
+           if(event.target.value == randomWord()){
+              document.querySelector(".textRandomWord").innerHTML = randomWord()
+            }
+        });
+
+
+
+// console.log(numLetter[num16])
 
         </script>
     </body>
