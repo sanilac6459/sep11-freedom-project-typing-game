@@ -27,27 +27,38 @@
         <script>
             // JS
 
+            var currentWord = "pie"; // starting word
 
-        function randomWord() {
-          var numLetter = ["cat","snorlax","meow"]
-          for(var i = 0; i < 3; i++){
-            var num3 = Math.floor(Math.random() * numLetter.length)
-            var ranWord = numLetter[num3]
-          }
-          return ranWord;
-        }
-
-        document.querySelector(".textRandomWord").innerHTML = randomWord()
-
-        document.querySelector("#word").addEventListener("keyup",function(event){
-           if(event.target.value == randomWord()){
-              document.querySelector(".textRandomWord").innerHTML = randomWord()
+            // function to run random words
+            function randomWord() {
+              var numLetter = ["cat", "snorlax", "meow"]; // array of random words
+              var randomIndex = Math.floor(Math.random() * numLetter.length);
+              return numLetter[randomIndex];
             }
-        });
+
+            // console.log(randomWord())
+
+            document.querySelector(".textRandomWord").innerHTML = currentWord; // starting word "pie" would be displayed first
+
+            // when user is done typing
+            document.querySelector("#word").addEventListener("keyup",function(event){
+               if(event.target.value == currentWord){ // if user type word correctly
+                   var newWord = randomWord(); // new word would be a random word running from the function
+                   document.querySelector(".textRandomWord").innerHTML = newWord; // moves onto the next random word
+                   currentWord = newWord; // new word would be the current word being displayed
+               }
+            //   return;
+            });
 
 
 
-// console.log(numLetter[num16])
+
+
+
+
+
+
+
 
         </script>
     </body>
