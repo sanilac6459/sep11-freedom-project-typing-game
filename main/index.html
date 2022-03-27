@@ -17,6 +17,7 @@
     <body>
         <!-- HTML -->
         <div>
+          <h1 id = "timer">_______</h1>
           <h2 class="textRandomWord">word : pie</h2>
           <input type="text" id="word"><br><br>
 
@@ -27,6 +28,36 @@
         <script>
             // JS
 
+            // timer
+            var counter = 0;
+            var timeLeft = 60;
+
+            // function that converts seconds to minutes
+            function convertSeconds(s) {
+              var min = floor(s/60); // gets rid of decimals, like Math.floor
+              var sec = s % 60; // remainder
+              return nf(min , 2) + ":" + nf(sec, 2); // 2 digits on left, 2 digits on right
+            }
+
+
+            function setup() {
+              var timer = select('#timer'); // selects the id element inside the HTML tag
+              timer.html(convertSeconds(timeLeft - counter)); // taking the number of seconds left and passes through the function convertSeconds
+
+              var interval = setInterval(timeIt, 1000); // starts the timer
+
+              function timeIt(){ // the event timeIt from setInterval()
+                counter++; // adds 1 and assigns it back to the variable
+                timer.html(convertSeconds(timeLeft - counter)); // display how many minutes and seconds left
+                if(counter == timeLeft) { // when time is up, 60 = 60
+                  clearInterval(interval); // stops the timer
+               }
+              }
+           }
+
+
+
+            // random word generator
             var currentWord = "pie"; // starting word
 
             // function to run random words
