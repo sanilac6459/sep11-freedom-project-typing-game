@@ -62,7 +62,7 @@
 
             // function to run random words
             function randomWord() {
-              var numLetter = ["cat", "snorlax", "meow"]; // array of random words
+              var numLetter = ["cat", "snorlax", "meow", "jigglypuff", "squirtle", "salamence"]; // array of random words
               var randomIndex = Math.floor(Math.random() * numLetter.length);
               return numLetter[randomIndex];
             }
@@ -78,6 +78,7 @@
                    document.querySelector(".textRandomWord").innerHTML = newWord; // moves onto the next random word
                    currentWord = newWord; // new word would be the current word being displayed
                }
+               
             //   return;
             });
 
