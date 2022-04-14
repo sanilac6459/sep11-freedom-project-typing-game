@@ -22,22 +22,22 @@
           <input type="text" id="word"><br><br>
 
         </div>
-        
-        
+
+
         <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
         <script src="sketch.js"></script>
         <script>
-          
-        
-        
-        
 
-        
+
+
+
+
+
             // JS
 
             // timer
             var counter = 0;
-            var timeLeft = 60;
+            var timeLeft = 30;
 
             // function that converts seconds to minutes
             function convertSeconds(s) {
@@ -68,11 +68,8 @@
             var currentWord = "pie"; // starting word
 
             // function to run random words
-            function randomWord() {
               var numLetter = ["cat", "snorlax", "meow"]; // array of random words
-              var randomIndex = Math.floor(Math.random() * numLetter.length);
-              return numLetter[randomIndex];
-            }
+              var wordIndex = 0
 
             // console.log(randomWord())
 
@@ -81,9 +78,11 @@
             // when user is done typing
             document.querySelector("#word").addEventListener("keyup",function(event){
                if(event.target.value == currentWord){ // if user type word correctly
-                   var newWord = randomWord(); // new word would be a random word running from the function
-                   document.querySelector(".textRandomWord").innerHTML = newWord; // moves onto the next random word
-                   currentWord = newWord; // new word would be the current word being displayed
+                   var newWord = numLetter[wordIndex]; // new word would be a random word running from the function
+                   document.querySelector(".textRandomWord").innerHTML = numLetter[wordIndex]; // moves onto the next random word
+                   currentWord = numLetter[wordIndex];
+                   wordIndex++
+                   // new word would be the current word being displayed
                }
             //   return;
             });
