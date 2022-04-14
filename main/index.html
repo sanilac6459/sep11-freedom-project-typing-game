@@ -1,3 +1,33 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+
+@sanilac6459
+sanilac6459
+/
+sep11-freedom-project-typing-game
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+sep11-freedom-project-typing-game/main/index.html
+@Rajabb4685
+Rajabb4685 word generator
+Latest commit 492549b 4 hours ago
+ History
+ 2 contributors
+@sanilac6459@Rajabb4685
+106 lines (66 sloc)  3.08 KB
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,21 +46,28 @@
     </head>
     <body>
         <!-- HTML -->
-        <div>
+<div>
           <h1 id = "timer">_______</h1>
           <h2 class="textRandomWord">word : pie</h2>
           <input type="text" id="word"><br><br>
 
         </div>
 
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+        <script src="sketch.js"></script>
         <script>
+
+
+
+
+
+
             // JS
 
             // timer
             var counter = 0;
-            var timeLeft = 60;
+            var timeLeft = 30;
 
             // function that converts seconds to minutes
             function convertSeconds(s) {
@@ -61,11 +98,8 @@
             var currentWord = "pie"; // starting word
 
             // function to run random words
-            function randomWord() {
-              var numLetter = ["cat", "snorlax", "meow", "jigglypuff", "squirtle", "salamence"]; // array of random words
-              var randomIndex = Math.floor(Math.random() * numLetter.length);
-              return numLetter[randomIndex];
-            }
+              var numLetter = ["cat", "snorlax", "meow"]; // array of random words
+              var wordIndex = 0
 
             // console.log(randomWord())
 
@@ -74,13 +108,15 @@
             // when user is done typing
             document.querySelector("#word").addEventListener("keyup",function(event){
                if(event.target.value == currentWord){ // if user type word correctly
-                   var newWord = randomWord(); // new word would be a random word running from the function
-                   document.querySelector(".textRandomWord").innerHTML = newWord; // moves onto the next random word
-                   currentWord = newWord; // new word would be the current word being displayed
+                   var newWord = numLetter[wordIndex]; // new word would be a random word running from the function
+                   document.querySelector(".textRandomWord").innerHTML = numLetter[wordIndex]; // moves onto the next random word
+                   currentWord = numLetter[wordIndex];
+                   wordIndex++
+                   // new word would be the current word being displayed
                }
-               
             //   return;
             });
+
 
 
 
@@ -95,6 +131,3 @@
         </script>
     </body>
 </html>
-
-
-
