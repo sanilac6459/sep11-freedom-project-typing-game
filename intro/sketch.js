@@ -79,7 +79,7 @@
 
               textSize(20);
               fill(255);
-              text("Instructions: Type word exactly as shown then press return to proceed", 490, 380)
+              text("Instructions: Type word exactly as shown then press enter/return to proceed", 490, 380)
 
               textSize(20);
               fill(255);
