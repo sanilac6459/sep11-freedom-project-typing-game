@@ -4,7 +4,8 @@
             var textX = [];
 
             function setup() {
-                createCanvas(2100, 860);
+                createCanvas(2050, 870);
+
 
                // SET text width and height to random
               for (let i = 0; i < 100; i++) {
@@ -22,7 +23,7 @@
             }
 
             function draw() {
-               background(0);
+              background(0);
 
               // TEXT
               textAlign(LEFT);
