@@ -76,7 +76,14 @@
             padding:20px;
 
         }
+<<<<<<< HEAD
 
+=======
+        
+        
+
+        
+>>>>>>> b6ff5e9d440c01929a75897f981dab35f2b16b5b
         </style>
 
         <title>Title</title>
@@ -246,8 +253,8 @@
                     // show list of the words ALREADY TYPED
                     function createWordSpan(color, content){ // this functionn will create a span element with a given background color and a content
                         var span = document.createElement("span"); // create a span element
-                        var style = "background-color: " + color; // span element should have a background color that matches with the given color argument
-                        span.setAttribute("style", style) // set the background color to the span
+                        var style = "color: " + color; // span element should have a color that matches with the given color argument
+                        span.setAttribute("style", style) // set the text color to the span
                         span.setAttribute("class", "typed-word")
 
                         span.textContent = content; // set content of the span to the content argument
@@ -345,7 +352,13 @@
                     if(isCorrect){
                         // if correct, add the word to the list with green background
                         span = createWordSpan("greenyellow", userInput); // show user's input with green backgeround WITH user's input as the content
+<<<<<<< HEAD
 
+=======
+                        
+                        
+                        
+>>>>>>> b6ff5e9d440c01929a75897f981dab35f2b16b5b
                         // add 1 to score
                         state.score += 1; // score increases by 1
 
@@ -354,9 +367,17 @@
                     else { // if user type incorrect answer
                         // if input is incorrect, add the word to the list with red background
                         span = createWordSpan("red", userInput); // show user's input with red backgeround WITH user's input as the content
+<<<<<<< HEAD
 
                     }
 
+=======
+                        
+                       
+                    }
+                    
+                    
+>>>>>>> b6ff5e9d440c01929a75897f981dab35f2b16b5b
                      mainContent.appendChild(span); // pass in newly created span element to the function
 
                     // clear user input
