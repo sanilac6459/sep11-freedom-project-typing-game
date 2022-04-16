@@ -15,7 +15,7 @@
 
 
             function setup() {
-                createCanvas(800, 750);
+                createCanvas(displayWidth, displayHeight);
 
                // SET text width and height to random
               for (let i = 0; i < 100; i++) {
@@ -27,7 +27,7 @@
 
               }
 
-               // FILL SHAPES AND TEXT GREEN
+               // FILL TEXT GREEN
                 fill(0,255,0);
 
             }
@@ -35,14 +35,13 @@
             function draw() {
 
 
-                 background(0);
+                 background(255);
                 // TEXT
               textAlign(LEFT);
               textSize(20);
               strokeWeight(1);
 
 
-              fill(color1, color2, color3); // fill shapes random color
 
 
             // height increases
@@ -71,16 +70,7 @@
             }
 
 
-            function keyPressed() {
-           // set rgb color to random
-                color1 = random(255);
 
-                color2 = random(255);
-
-                color3 = random(255);
-
-
-            }
 
 
 
