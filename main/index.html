@@ -130,20 +130,36 @@
         <script>
 
 
-
-
-
-
-
                 
                 // JS
+                var x;
+                var y;
+                xSpeed = 0;
+                ySpeed = 0;
+          
                 function setup(){
-                    createCanvas(1400, 300); 
+                    createCanvas(1400, 300);
+                    x = 0;
+                    y = 150;
+                    
                 }
                 
                 function draw() {
                     background(255);
+                    fill(0);
+                    ellipse(x,y,50,50);
+                    
+                    // x += xSpeed;
+                    // console.log(key);
+                    
+                    x = constrain(x,25,width-25);
+                    
+                    // y = constrain(y,25,height-25);
                 }
+                
+               
+               
+              
                 
                 
                 // click on the start game button
@@ -285,7 +301,8 @@
                     if(isCorrect){ 
                         // if correct, add the word to the list with green background
                         span = createWordSpan("greenyellow", userInput); // show user's input as green text WITH user's input as the content
-                        
+                        //  xSpeed = +1; // SPEED OF CIRCLE ADDS
+                        x+=10;
                         // add 1 to score
                         state.score += 1; // score increases by 1
                         
