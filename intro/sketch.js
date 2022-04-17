@@ -5,7 +5,7 @@
             var textX = [];
 
             function setup() {
-                createCanvas(2100, 950);
+                createCanvas(2100, 1000);
 
 
 
