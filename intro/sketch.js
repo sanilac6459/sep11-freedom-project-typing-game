@@ -1,4 +1,4 @@
-
+           // intro page background
 
            // text
             var textY = [];
@@ -14,14 +14,7 @@
 
                 textY[i] = random(0,height);
                 textX[i] = random(410,600);
-
-
-
               }
-
-               // FILL TEXT GREEN
-                fill(0,255,0);
-
             }
 
             function draw() {
@@ -88,7 +81,7 @@
            // when user press key
               function keyPressed() {
                 if(keyCode == 32) { // when the user clicks their spacebar
-                  location.replace("https://sanilac6459.github.io/sep11-freedom-project-typing-game/main/index.html")
+                  location.replace("https://sanilac6459.github.io/sep11-freedom-project-typing-game/main/index.html") // directs them to main page where they start the game
                 }
               }
 
