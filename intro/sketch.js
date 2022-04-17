@@ -5,8 +5,8 @@
             var textX = [];
 
             function setup() {
-                createCanvas(1440, 820);
-                
+                createCanvas(2100, 950);
+
 
 
                // SET text width and height to random
@@ -25,7 +25,7 @@
             }
 
             function draw() {
-              background(255);
+              background(0);
 
               // TEXT
               textAlign(LEFT);
@@ -35,28 +35,23 @@
 
             // text's height increases
               for (let i = 0; i < textY.length; i++) {
-                strokeWeight(0)
+
+                // draws text
+
+                strokeWeight(1)
                 fill(15, 174, 189)
-                text("keysanity", textX[i] - 400, textY[i]); // draw text
-                text("keysanity", textX[i] - 300, textY[i]); // draw text
-                text("keysanity", textX[i] - 200 , textY[i]); // draw text
-                text("keysanity", textX[i] - 100, textY[i]); // draw text
-                text("keysanity", textX[i] - 50, textY); // draw text
-                text("keysanity", textX[i] + 50, textY[i]); // draw text
-                text("keysanity", textX[i] + 100, textY[i]); // draw text
-                text("keysanity", textX[i] + 200, textY[i]); // draw text
-                text("keysanity", textX[i] + 300, textY[i]); // draw text
-                text("keysanity", textX[i] + 400, textY[i]); // draw text
-                text("keysanity", textX[i] + 500, textY[i]); // draw text
-                text("keysanity", textX[i] + 600, textY[i]); // draw text
-                text("keysanity", textX[i] + 700, textY[i]); // draw text
-                text("keysanity", textX[i] + 800, textY[i]); // draw text
-                text("keysanity", textX[i] + 900, textY[i]); // draw text
-                text("keysanity", textX[i] + 1000, textY[i]); // draw text
-                text("keysanity", textX[i] + 1100, textY[i]); // draw text
-                text("keysanity", textX[i] + 1200, textY[i]); // draw text
-                text("keysanity", textX[i] + 1300, textY[i]); // draw text
-                text("keysanity", textX[i] + 1360, textY[i]); // draw text
+                text("keysanity", textX[i] - 400, textY[i]);
+                text("keysanity", textX[i] - 200 , textY[i]);
+                text("keysanity", textX[i] - 50, textY[i]);
+                text("keysanity", textX[i] + 50, textY[i]);
+                text("keysanity", textX[i] + 200, textY[i]);
+                text("keysanity", textX[i] + 300, textY[i]);
+                text("keysanity", textX[i] + 500, textY[i]);
+                text("keysanity", textX[i] + 600, textY[i]);
+                text("keysanity", textX[i] + 800, textY[i]);
+                text("keysanity", textX[i] + 1000, textY[i]);
+                text("keysanity", textX[i] + 1200, textY[i]);
+                text("keysanity", textX[i] + 1360, textY[i]);
 
 
                 textY[i]++; // text height increases by 1
@@ -73,17 +68,18 @@
               stroke(0)
               strokeWeight(5)
 
+
               textSize(50);
               fill(255);
-              text("Welcome to KEYSANITY!", 500, 300)
+              text("Welcome to KEYSANITY!", 750, 300)
 
               textSize(20);
               fill(255);
-              text("Instructions: Type word exactly as shown then press enter/return to proceed", 490, 380)
+              text("Instructions: Type word exactly as shown then press enter/return to proceed", 690, 380)
 
               textSize(20);
               fill(255);
-              text("Press spacebar to start", 710, 450)
+              text("Press spacebar to start", 950, 450)
 
             }
 
