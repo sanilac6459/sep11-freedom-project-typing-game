@@ -9,15 +9,15 @@
         <link href="style.css" rel="stylesheet" type="text/css" />
         <style>
             /* CSS */
-            
+
         body {
             font-family: sans-serif;
             font-weight: bold;
             background-color: lightblue;
             color: white;
-        
+
         }
-        
+
         input {
             padding: 15px;
             font-size: 40px;
@@ -25,7 +25,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         button {
             background-color: powderblue;
             color:white;
@@ -40,7 +40,7 @@
             margin-bottom: 20px;
             display:block;
             }
-            
+
         #main-heading {
             padding-top: 15px;
             text-align: center;
@@ -48,286 +48,289 @@
             font-size: 60px;
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
         }
-        
+
         #stats {
             margin-left: auto;
             margin-right: auto;
             width: fit-content;
-            
+
         }
-        
+
         .hide {
             display: none;
         }
-        
+
         #text-display {
             font-size: 40px;
             padding-top: 10px;
             padding-bottom: 10px;
             text-align: center;
         }
-        
+
         .typed-word {
             padding: 8px;
             display: inline-block;
         }
-        
+
         main {
             padding:20px;
-            
+
         }
-        
+
         </style>
 
         <title>Title</title>
     </head>
     <body>
         <!-- HTML -->
-        
 
-        
-        
-        
-       
-        
         <!--HEADING-->
         <header>
-            
+
             <h1 id="main-heading">KEYSANITY</h1>
-            
+
             <div id="stats" class="hide">
             <p>WPM: <span id="wpm-display"></span></p>
             <p>SCORE: <span id="score-display"></span></p>
             <p>TIME LEFT: <span id="time-display"></span></p>
             </div>
         </header>
-        
-        
+
+
         <!--MAIN-->
         <main>
            <div id="main-section">
                <!--typed words-->
                <class id="main-content"></class>
-               
+
                <button id="button">start game</button>
            </div>
-           
-           
+
+
            <div id="text-display"></div>
-        
-        
+
+
             <form id="form">
                 <input type="text" id="input" class="hide">
             </form>
         </main>
 
 
-        <script src = "./words.js" ></script> 
-        
-        
+        <script src = "./words.js" ></script>
+
+
         <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
         <script src="sketch.js"></script>
         <script>
 
 
-                
-                // JS
+            // JS
+          
+                // sprite
+                let spriteImages = []; // array of sprite images
                 var x;
                 var y;
-                // xSpeed = 0;
-                // ySpeed = 0;
-          
-                function setup(){
+                
+                
+                
+                function setup() {
+                    frameRate(25); // slow down frame rate
                     createCanvas(1400, 300);
-                    x = 0;
-                    y = 200;
+                    for (var i = 0; i<=16; i++){ // for every index less than or equal to 8
+                    spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
+                    }
                     
+                    x = 0;
+                    y = 50;
+                    
+                    
+                    bg = loadImage('https://cdn.dribbble.com/users/1016207/screenshots/2677623/vetal_s_shot_copy_2.png'); // load background image
                 }
+                
                 
                 function draw() {
-                    background(255);
-                    fill(0);
-                    ellipse(x,y,50,50);
-                    
-                    
                     x = constrain(x,25,width-25);
-                    
+                    y = constrain(y,25,height-25);
+            
+                    background(255);
+                    background(bg);
+                    image(spriteImages[frameCount % 16], x, y, 200, 200);
+                   
                 }
                 
-            //     var blob
-            //   function preload(){
-            //       blobanim = loadAnimation("image/blob1.png", "image/blob2.png", "image/blob3.png")
-            //   }
-               
-              
                 
                 
+
+
                 // click on the start game button
                 var startGameButton = document.getElementById("button"); // store BUTTON element as a variable
-                var statsContent = document.getElementById("stats"); // store STATS element as a variable 
+                var statsContent = document.getElementById("stats"); // store STATS element as a variable
                 var input = document.getElementById("input"); // store INPUT element as a variable
                 var splittedWords = wordString.split(" "); // split the string of words to an ARRAY by every space
                 var textDisplay = document.getElementById("text-display"); // store TEXT DISPLAY element as a variable
                 var form = document.getElementById("form"); // VIEW THE INPUT LOGIC
                 var mainContent = document.getElementById("main-content"); // store MAIN CONTENT class as a variable
-                var timeDisplay = document.getElementById("time-display") // store TIME DISPLAY span as a variable 
-                var scoreDisplay = document.getElementById("score-display") // store SCORE DISPLAY span as a variable 
-                var wpmDisplay = document.getElementById("wpm-display") // store WPM DISPLAY span as a variable 
+                var timeDisplay = document.getElementById("time-display") // store TIME DISPLAY span as a variable
+                var scoreDisplay = document.getElementById("score-display") // store SCORE DISPLAY span as a variable
+                var wpmDisplay = document.getElementById("wpm-display") // store WPM DISPLAY span as a variable
 
-                
+
                 // state of the game
                 var state = {
                     currentWord: "", // current word
                     score: 0, // score
                     timeElapsed: 0, // time elapsed
-                    gameLength: 60, // 30 secs
-                    
+                    gameLength: 60, // 60 secs
+
                 };
-                
+
                     // generate random words from the string of words
                     function getRandomWord(){
                         return splittedWords[Math.floor(Math.random() * splittedWords. length)]; // get random word from the splittedWords array
-                    } 
-                    
+                    }
+
                     console.log(getRandomWord()); // console.log the random word
-                
+
                     // show next random word
                     function nextWord(){
-                        var word = getRandomWord(); // calling getRandomWord function 
+                        var word = getRandomWord(); // calling getRandomWord function
                         textDisplay.textContent = word; // set text content to random word
                         state.currentWord = word; // set currentWord property in our state object to the word generated
                     }
-                
-                
+
+
                     // show list of the words ALREADY TYPED
-                    function createWordSpan(color, content){ // this functionn will create a span element with a given background color and a content
+                    function createWordSpan(color, content){ // this function will create a span element with a given background color and a content
                         var span = document.createElement("span"); // create a span element
                         var style = "color: " + color; // span element should have a text color that matches with the given color argument
                         span.setAttribute("style", style) // set the text color to the span
                         span.setAttribute("class", "typed-word")
-                        
+
                         span.textContent = content; // set content of the span to the content argument
-                        return span; // return span element that we created 
+                        return span; // return span element that we created
                     }
-                    
-                    
-                    
+
+
+
                     // calculate stats
                     function renderStats(){
                         // time remaining
                         timeDisplay.textContent = (state.gameLength - state.timeElapsed) // game length - time elapsed
+
                         // score
                         scoreDisplay.textContent = state.score // show current score
+
                         // wpm
                         wpmDisplay.textContent = (state.score / (state.timeElapsed / 90)).toFixed(0); // calculate the numbers of correct word entered per minute
                     }
-                    
-                    
+
+
                     // timer
                     function startClock(){
                         // for every sec
                         setInterval(function(){
                             state.timeElapsed += 1; // increment the time elapsed by 1 for every running second
-                            
+
                             // calculate the stats
                             renderStats(); // call renderStats FUNCTION
-                            
+
                             // check if game has ended
-                            if(state.timeElapsed === state.gameLength){ // IF time elapsed is equal to game length
-                            
-                            // when game ended, alert player WPM
+                            if(state.timeElapsed === state.gameLength){ // IF time elapsed is equal to game length (when time is up)
+
+                            // when game ended, alert player WPM and score
                                 alert("GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent);
-                                
+
                             // refresh the page
                                 window.location.reload();
                             }
-                            
-                            
-                        }, 1000);
-                        
-                    }
-                    
 
-                
-                
+
+                        }, 1000);
+
+                    }
+
+
+
+
                 // WHEN BUTTON IS CLICKED
                 startGameButton.addEventListener("click", function(event){ // if button is clicked, function runs
                     event.preventDefault(); // prevent just in case it triggers some default behavior on browser
-                
-                
-                
+
+
+
                     // hide the button
                     startGameButton.className = "hide"; // set button class name to 'hide'
-                    
-                    
+
+
                     // show the stats
                     statsContent.className = ""; // set stats class name to an empty string to remove the "hide" class
-                    
-                    
+
+
                     // show the input field
                     input.className = ""; // set input class name to an empty string to remove the "hide" class
-                    
-                    
+
+
                     // focus on input field
-                    input.focus(); // player doesn't have to click on input field to start typing, auto-focused 
-                    
-                    
+                    input.focus(); // player doesn't have to click on input field to start typing, auto-focused
+
+
                     // show the word
                     nextWord(); // calling nextWord function
-                    
-                    // start the timer 
+
+                    // start the timer
                     startClock(); // call startClock FUNCTION
                 })
-                
-                
-                
+
+
+
                 // WHEN USER SUBMITS INPUT
                 form.addEventListener("submit", function(event){
                     event.preventDefault(); // prevent just in case it triggers some default behavior on browser
-                    
-                    // when the user enter a input 
+
+                    // when the user enter a input
                         var userInput = input.value; // get the user input by calling on the value property of the input element
-                        
+
                         // if user didnt enter a input, do nothing
                             if(userInput === ""){ // if user's input equals an EMPTY STRING
                                 return; // stop the function
                             }
-                        
+
                     // check if input is correct
                     var isCorrect = userInput === state.currentWord; // whether user's input IS EQUAL to the current word OR NOT
-                    
+
                     var span; // create different span variable with different color based on the situation, blank span variable
-                    
-                    if(isCorrect){ 
+
+                    if(isCorrect){
                         // if correct, add the word to the list with green background
                         span = createWordSpan("green", userInput); // show user's input as green text WITH user's input as the content
-                        //  xSpeed = +1; // SPEED OF CIRCLE ADDS
-                        x+=10;
+
                         // add 1 to score
                         state.score += 1; // score increases by 1
                         
+                        x+=10 // SPRITE moves to the right by 10 pixels
+
                     }
-                    
+
                     else { // if user type incorrect answer
-                        // if input is incorrect, add the word to the list with red background 
+                        // if input is incorrect, add the word to the list with red background
                         span = createWordSpan("red", userInput); // show user's input as red text WITH user's input as the content
-                       
+
                     }
-                    
+
                      mainContent.appendChild(span); // pass in newly created span element to the function
-                     
-                    // clear user input 
+
+                    // clear user input
                     input.value = ""; // set the value property of the input to an empty string
-                    
+
                     // show the next word
                     nextWord(); // call nextWord function
                     renderStats(); // calling renderStats function
                 });
-                
-                
-                
-                
-                
+
+
+
+
+
 
 
 
@@ -338,6 +341,5 @@
         </script>
     </body>
 </html>
-
 
 

@@ -1,4 +1,4 @@
-
+           // intro page background
 
            // text
             var textY = [];
@@ -14,31 +14,24 @@
 
                 textY[i] = random(0,height);
                 textX[i] = random(410,600);
-
-
-
               }
-
-               // FILL TEXT GREEN
-                fill(0,255,0);
-
             }
 
             function draw() {
-              background(0);
+              background(176, 224, 230);
 
               // TEXT
+              stroke(0)
               textAlign(LEFT);
               textSize(20);
-              strokeWeight(1);
+              // stroke(0)
+              // strokeWeight(1);
 
 
             // text's height increases
               for (let i = 0; i < textY.length; i++) {
 
-                // draws text
-
-                strokeWeight(1)
+               noStroke()
                 fill(15, 174, 189)
                 text("keysanity", textX[i] - 400, textY[i]);
                 text("keysanity", textX[i] - 200 , textY[i]);
@@ -65,13 +58,13 @@
 
 
              // welcoming message
-              stroke(0)
-              strokeWeight(5)
-
 
               textSize(50);
               fill(255);
+              stroke(0)
+              strokeWeight(3);
               text("Welcome to KEYSANITY!", 750, 300)
+
 
               textSize(20);
               fill(255);
@@ -79,7 +72,7 @@
 
               textSize(20);
               fill(255);
-              text("Press spacebar to start", 950, 450)
+              text("Press spacebar to start", 930, 450)
 
             }
 
@@ -88,7 +81,7 @@
            // when user press key
               function keyPressed() {
                 if(keyCode == 32) { // when the user clicks their spacebar
-                  location.replace("https://sanilac6459.github.io/sep11-freedom-project-typing-game/main/index.html")
+                  location.replace("https://sanilac6459.github.io/sep11-freedom-project-typing-game/main/index.html") // directs them to main page where they start the game
                 }
               }
 
