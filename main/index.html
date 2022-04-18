@@ -15,6 +15,7 @@
             font-weight: bold;
             background-color: lightblue;
             color: white;
+            background-image: url("https://i.pinimg.com/originals/f7/0b/dd/f70bdd8c08f479a16519e8319b51b46b.gif");
 
         }
 
@@ -27,8 +28,9 @@
         }
 
         button {
-            background-color: powderblue;
+            /*background-color: powderblue;*/
             color:white;
+            background: rgba(0,0,0,0.5);
             cursor: pointer;
             padding: 15px;
             font-size: 20px;
@@ -42,14 +44,21 @@
             }
 
         #main-heading {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
             padding-top: 15px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 60px;
-            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            padding-bottom: 10px;
+            /*text-align: center;*/
+            /*font-weight: bold;*/
+            /*font-size: 60px;*/
+            /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
         }
 
         #stats {
+            background: rgba(0,0,0,0.5);
+            border-radius: 4px;
+            padding: 10px;
             margin-left: auto;
             margin-right: auto;
             width: fit-content;
@@ -65,6 +74,7 @@
             padding-top: 10px;
             padding-bottom: 10px;
             text-align: center;
+            background: rgba(0,0,0,0.5);
         }
 
         .typed-word {
@@ -72,9 +82,13 @@
             display: inline-block;
         }
 
+        #main-section {
+            background: rgba(0,0,0,0.5);
+
+        }
+        
         main {
             padding:20px;
-
         }
 
         </style>
@@ -87,7 +101,8 @@
         <!--HEADING-->
         <header>
 
-            <h1 id="main-heading">KEYSANITY</h1>
+            <!--<h1 id="main-heading">KEYSANITY</h1>-->
+            <img src="logo1.png" id="main-heading" width="500" height="100">
 
             <div id="stats" class="hide">
             <p>WPM: <span id="wpm-display"></span></p>
@@ -103,7 +118,7 @@
                <!--typed words-->
                <class id="main-content"></class>
 
-               <button id="button">start game</button>
+               <button id="button">PRESS TO START GAME</button>
            </div>
 
 
@@ -128,6 +143,7 @@
           
                 // sprite
                 let spriteImages = []; // array of sprite images
+                let img;
                 var x;
                 var y;
                 
@@ -135,26 +151,27 @@
                 
                 function setup() {
                     frameRate(25); // slow down frame rate
-                    createCanvas(1400, 300);
+                    createCanvas(1400, 480);
                     for (var i = 0; i<=16; i++){ // for every index less than or equal to 8
                     spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
                     }
                     
-                    x = 0;
-                    y = 50;
+                    x = 150;
+                    y = 150;
+                    img = loadImage('gold.gif');
                     
                     
-                    bg = loadImage('https://cdn.dribbble.com/users/1016207/screenshots/2677623/vetal_s_shot_copy_2.png'); // load background image
+                    bg = loadImage('https://t4.ftcdn.net/jpg/02/39/45/37/360_F_239453726_6rjXgbVs6RLXaxPU2eG11UKjLV2aMomJ.jpg'); // load background image
                 }
                 
                 
                 function draw() {
-                    x = constrain(x,25,width-25);
-                    y = constrain(y,25,height-25);
+                    x = constrain(x,150,width-175);
             
                     background(255);
                     background(bg);
                     image(spriteImages[frameCount % 16], x, y, 200, 200);
+                    image(img, 1090, 125,200,200);
                    
                 }
                 
@@ -180,7 +197,7 @@
                     currentWord: "", // current word
                     score: 0, // score
                     timeElapsed: 0, // time elapsed
-                    gameLength: 60, // 60 secs
+                    gameLength: 120, // 60 secs
 
                 };
 
@@ -221,7 +238,7 @@
                         scoreDisplay.textContent = state.score // show current score
 
                         // wpm
-                        wpmDisplay.textContent = (state.score / (state.timeElapsed / 90)).toFixed(0); // calculate the numbers of correct word entered per minute
+                        wpmDisplay.textContent = (state.score / (state.timeElapsed / 60)).toFixed(0); // calculate the numbers of correct word entered per minute
                     }
 
 
@@ -255,7 +272,6 @@
                 // WHEN BUTTON IS CLICKED
                 startGameButton.addEventListener("click", function(event){ // if button is clicked, function runs
                     event.preventDefault(); // prevent just in case it triggers some default behavior on browser
-
 
 
                     // hide the button
@@ -302,7 +318,7 @@
 
                     if(isCorrect){
                         // if correct, add the word to the list with green background
-                        span = createWordSpan("green", userInput); // show user's input as green text WITH user's input as the content
+                        span = createWordSpan("greenyellow", userInput); // show user's input as green text WITH user's input as the content
 
                         // add 1 to score
                         state.score += 1; // score increases by 1
