@@ -17,7 +17,7 @@
             color: white;
             background-image: url("https://i.pinimg.com/originals/f7/0b/dd/f70bdd8c08f479a16519e8319b51b46b.gif");
             display: block;
-            
+
         }
 
         input {
@@ -52,7 +52,7 @@
             padding-bottom: 10px;
             padding-left: 10px;
             padding-right:10px;
-            background: rgba(0,0,0,0.1);
+            background: white;
             border-radius: 15px;
 
         }
@@ -93,10 +93,10 @@
         main {
             padding:20px;
         }
-        
+
         #sketch-container {
             align-content: center;
-        
+
         }
 
         </style>
@@ -104,7 +104,7 @@
         <title>Title</title>
     </head>
     <body>
-        
+
         <!-- HTML -->
 
         <!--HEADING-->
@@ -163,9 +163,9 @@
                     frameRate(25); // slow down frame rate
                     let canvas = createCanvas(1400, 500); // CANVAS
                     canvas.parent('sketch-container'); // position canvas
-                    
+
                     for (var i = 0; i<=16; i++){ // for every index less than or equal to 8
-                    spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
+                       spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
                     }
 
                     x = 150;
