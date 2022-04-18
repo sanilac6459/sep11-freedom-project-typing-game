@@ -137,7 +137,7 @@
             <form id="form">
                 <input type="text" id="input" class="hide">
             </form>
-            
+
         </main>
 
 
@@ -162,7 +162,8 @@
                 function setup() {
                     frameRate(25); // slow down frame rate
                     createCanvas(windowWidth, 500); // CANVAS
-                    
+                    createCanvas.center(); // center canvas
+
 
                     for (var i = 0; i<=16; i++){ // for every index less than or equal to 8
                        spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
