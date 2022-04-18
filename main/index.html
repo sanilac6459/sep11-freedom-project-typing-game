@@ -17,7 +17,7 @@
             color: white;
             background-image: url("https://i.pinimg.com/originals/f7/0b/dd/f70bdd8c08f479a16519e8319b51b46b.gif");
             display: block;
-
+            
         }
 
         input {
@@ -93,12 +93,18 @@
         main {
             padding:20px;
         }
+        
+        #sketch-container {
+            align-content: center;
+        
+        }
 
         </style>
 
         <title>Title</title>
     </head>
     <body>
+        
         <!-- HTML -->
 
         <!--HEADING-->
@@ -131,6 +137,7 @@
             <form id="form">
                 <input type="text" id="input" class="hide">
             </form>
+            <div id="sketch-container"></div>
         </main>
 
 
@@ -154,7 +161,9 @@
 
                 function setup() {
                     frameRate(25); // slow down frame rate
-                    createCanvas(1400, 480);
+                    let canvas = createCanvas(1400, 500); // CANVAS
+                    canvas.parent('sketch-container'); // position canvas
+                    
                     for (var i = 0; i<=16; i++){ // for every index less than or equal to 8
                     spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
                     }
