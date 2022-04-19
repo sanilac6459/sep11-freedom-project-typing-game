@@ -18,7 +18,7 @@
             }
 
             function draw() {
-              // background(176, 224, 230);
+              background(176, 224, 230);
 
               // TEXT
               stroke(0)
@@ -84,4 +84,3 @@
                   location.replace("https://sanilac6459.github.io/sep11-freedom-project-typing-game/main/index.html") // directs them to main page where they start the game
                 }
               }
-
