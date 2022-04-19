@@ -72,7 +72,7 @@
 
               textSize(20);
               fill(255);
-              text("Press spacebar to start", 930, 450)
+              text("Press spacebar, then click the start button", 840, 450)
 
             }
 
