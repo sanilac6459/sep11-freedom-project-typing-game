@@ -18,7 +18,7 @@
             }
 
             function draw() {
-              // background(176, 224, 230);
+              background(176, 224, 230);
 
               // TEXT
               stroke(0)
