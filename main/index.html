@@ -144,7 +144,7 @@
             <form id="form">
                 <input type="text" id="input" class="hide">
             </form>
-
+            
         </main>
 
 
@@ -208,10 +208,10 @@
                 var textDisplay = document.getElementById("text-display"); // store TEXT DISPLAY element as a variable
                 var form = document.getElementById("form"); // VIEW THE INPUT LOGIC
                 var mainContent = document.getElementById("main-content"); // store MAIN CONTENT class as a variable
-                var timeDisplay = document.getElementById("time-display") // store TIME DISPLAY span as a variable
-                var scoreDisplay = document.getElementById("score-display") // store SCORE DISPLAY span as a variable
-                var wpmDisplay = document.getElementById("wpm-display") // store WPM DISPLAY span as a variable
-
+                var timeDisplay = document.getElementById("time-display"); // store TIME DISPLAY span as a variable
+                var scoreDisplay = document.getElementById("score-display"); // store SCORE DISPLAY span as a variable
+                var wpmDisplay = document.getElementById("wpm-display"); // store WPM DISPLAY span as a variable
+               
 
                 // state of the game
                 var state = {
@@ -277,7 +277,7 @@
 
                             // when game ended, alert player WPM and score
                                 alert("GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent);
-                                
+                            
                             // refresh the page
                                 window.location.reload();
                             }
