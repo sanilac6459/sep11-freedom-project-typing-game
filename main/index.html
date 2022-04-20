@@ -178,10 +178,8 @@
 
                 function setup() {
                     frameRate(25); // slow down frame rate
-                     createCanvas(1400, 500); // CANVAS
-
-
-
+                     createCanvas(windowWidth, 500); // CANVAS
+                     
                     for (var i = 0; i<=16; i++){ // for every index less than or equal to 8
                        spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
                     }
@@ -190,16 +188,13 @@
                     y = 150;
                     img = loadImage('gold.gif'); // gold
 
-
-                    // bg = loadImage('https://t4.ftcdn.net/jpg/02/39/45/37/360_F_239453726_6rjXgbVs6RLXaxPU2eG11UKjLV2aMomJ.jpg'); // load background image
-                    bg = loadImage('bg1.gif');
+                    bg = loadImage('bg1.gif'); // load background image
                 }
 
 
                 function draw() {
                     x = constrain(x,150,width-175);
 
-                    background(255);
                     background(bg);
                     image(spriteImages[frameCount % 16], x, y, 200, 200);
                     image(img, 1090, 125,200,200);
