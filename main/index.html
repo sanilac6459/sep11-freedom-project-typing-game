@@ -11,9 +11,7 @@
             /* CSS */
 
         body {
-            font-family: sans-serif;
             font-weight: bold;
-            background-color: lightblue;
             color: white;
             /*background-image: url("https://i.pinimg.com/originals/f7/0b/dd/f70bdd8c08f479a16519e8319b51b46b.gif");*/
             /*background-image: url("http://test.ultralinx.co/wp-content/uploads/2020/03/1_ymlagvx.gif");*/
@@ -44,6 +42,7 @@
             margin-right: auto;
             margin-bottom: 20px;
             display:block;
+            font-family: American Typewriter;
             }
 
         #main-heading {
@@ -69,6 +68,7 @@
             margin-left: auto;
             margin-right: auto;
             width: fit-content;
+            font-family: American Typewriter;
 
         }
 
@@ -81,7 +81,6 @@
             padding-top: 10px;
             padding-bottom: 10px;
             text-align: center;
-            /*background: rgba(0,0,0,0.5);*/
             border-radius: 15px;
         }
 
@@ -99,11 +98,21 @@
 
         main {
             padding:20px;
+            font-family: American Typewriter;
         }
 
         #sketch-container {
             align-content: center;
 
+        }
+        
+        #gameover {
+            color: white;
+            border-radius: 15px;
+            padding-left: 350px;
+            margin-right: auto;
+            background: rgb(128, 0, 32);
+            font-family: impact;
         }
 
         </style>
@@ -144,7 +153,8 @@
             <form id="form">
                 <input type="text" id="input" class="hide">
             </form>
-            
+            <button type="button" class="hide" id ="refresh" onClick="window.location.reload();">REFRESH PAGE</button> 
+            <h1 id="gameover"></h1>
         </main>
 
 
@@ -211,7 +221,7 @@
                 var timeDisplay = document.getElementById("time-display"); // store TIME DISPLAY span as a variable
                 var scoreDisplay = document.getElementById("score-display"); // store SCORE DISPLAY span as a variable
                 var wpmDisplay = document.getElementById("wpm-display"); // store WPM DISPLAY span as a variable
-               
+               var refresh = document.getElementById("refresh"); // BUTTON REFRESH
 
                 // state of the game
                 var state = {
@@ -228,6 +238,7 @@
                     }
 
                     console.log(getRandomWord()); // console.log the random word
+                    
 
                     // show next random word
                     function nextWord(){
@@ -275,11 +286,15 @@
                             // check if game has ended
                             if(state.timeElapsed === state.gameLength){ // IF time elapsed is equal to game length (when time is up)
 
-                            // when game ended, alert player WPM and score
-                                alert("GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent);
+                            // when game ended, show player WPM and score
+                                document.getElementById("gameover").innerHTML = "GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent;
+                                
+                            refresh.className = ""; // show BUTTON to refresh the page 
+                            statsContent.className = "hide"; // hide stats
+                            textDisplay.className = "hide"; // hide text display
+                            form.className = "hide"; // hide input box
+                            mainContent.className = "hide"; // hide words typed
                             
-                            // refresh the page
-                                window.location.reload();
                             }
 
 
