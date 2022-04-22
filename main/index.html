@@ -114,9 +114,9 @@
             background: rgb(128, 0, 32);
             font-family: impact;
         }
-        
+
         canvas {
-            padding-right: 20px;
+            padding-right: 40px;
         }
 
         </style>
@@ -198,7 +198,7 @@
 
                 function draw() {
                     x = constrain(x,150,width-175); // prevent sprite from going past a certain x value
-                    
+
                     background(bg); // background image
                     image(spriteImages[frameCount % 16], x, y, 200, 200); // sprite
                     image(img, 1090, 125,200,200); // gold
