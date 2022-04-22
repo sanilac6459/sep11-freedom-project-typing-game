@@ -114,6 +114,10 @@
             background: rgb(128, 0, 32);
             font-family: impact;
         }
+        
+        canvas {
+            padding-right: 20px;
+        }
 
         </style>
 
@@ -184,20 +188,20 @@
                        spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
                     }
 
-                    x = 150;
-                    y = 150;
-                    img = loadImage('gold.gif'); // gold
+                    x = 150; // sprite x value
+                    y = 150; // sprite y value
+                    img = loadImage('gold.gif'); // gold image
 
                     bg = loadImage('bg1.gif'); // load background image
                 }
 
 
                 function draw() {
-                    x = constrain(x,150,width-175);
-
-                    background(bg);
-                    image(spriteImages[frameCount % 16], x, y, 200, 200);
-                    image(img, 1090, 125,200,200);
+                    x = constrain(x,150,width-175); // prevent sprite from going past a certain x value
+                    
+                    background(bg); // background image
+                    image(spriteImages[frameCount % 16], x, y, 200, 200); // sprite
+                    image(img, 1090, 125,200,200); // gold
 
                 }
 
