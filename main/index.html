@@ -20,7 +20,7 @@
 
         }
 
-        input { 
+        input {
             padding: 15px;
             font-size: 40px;
             display: block;
@@ -105,7 +105,7 @@
             align-content: center;
 
         }
-        
+
         #gameover {
             color: white;
             border-radius: 15px;
@@ -121,7 +121,7 @@
 
         </style>
 
-        <title>Title</title>
+        <title>Keysanity typing game</title>
     </head>
     <body>
 
@@ -157,7 +157,7 @@
             <form id="form">
                 <input type="text" id="input" class="hide">
             </form>
-            <button type="button" class="hide" id ="refresh" onClick="window.location.reload();">REFRESH PAGE</button> 
+            <button type="button" class="hide" id ="refresh" onClick="window.location.reload();">REFRESH PAGE</button>
             <h1 id="gameover"></h1>
         </main>
 
@@ -183,7 +183,7 @@
                 function setup() {
                     frameRate(25); // slow down frame rate
                      createCanvas(windowWidth, 500); // CANVAS
-                     
+
                     for (var i = 0; i<=16; i++){ // for every index less than or equal to 8
                        spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
                     }
@@ -209,7 +209,7 @@
 
 
 
-                
+
                 var startGameButton = document.getElementById("button"); // store BUTTON element as a variable
                 var statsContent = document.getElementById("stats"); // store STATS element as a variable
                 var input = document.getElementById("input"); // store INPUT element as a variable
@@ -237,7 +237,7 @@
                     }
 
                     console.log(getRandomWord()); // console.log the random word
-                    
+
 
                     // show next random word
                     function nextWord(){
@@ -287,13 +287,13 @@
 
                             // when game ended, show player WPM and score
                                 document.getElementById("gameover").innerHTML = "GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent;
-                                
-                            refresh.className = ""; // show BUTTON to refresh the page 
+
+                            refresh.className = ""; // show BUTTON to refresh the page
                             statsContent.className = "hide"; // hide stats
                             textDisplay.className = "hide"; // hide text display
                             form.className = "hide"; // hide input box
                             mainContent.className = "hide"; // hide words typed
-                            
+
                             }
 
 
