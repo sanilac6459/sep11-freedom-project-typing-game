@@ -190,7 +190,7 @@
                        spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
                     }
 
-                    x = 150; // sprite x value
+                    x = windowWidth-4000; // sprite x value
                     y = 150; // sprite y value
                     img = loadImage('gold.gif'); // gold image
 
@@ -203,7 +203,7 @@
 
                     background(bg); // background image
                     image(spriteImages[frameCount % 16], x, y, 200, 200); // sprite
-                    image(img, 1090, 125,200,200); // gold
+                    image(img, windowWidth-300, 125,200,200); // gold
 
                 }
 
