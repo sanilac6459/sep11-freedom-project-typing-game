@@ -11,9 +11,7 @@
             /* CSS */
 
         body {
-            font-family: sans-serif;
             font-weight: bold;
-            background-color: lightblue;
             color: white;
             /*background-image: url("https://i.pinimg.com/originals/f7/0b/dd/f70bdd8c08f479a16519e8319b51b46b.gif");*/
             /*background-image: url("http://test.ultralinx.co/wp-content/uploads/2020/03/1_ymlagvx.gif");*/
@@ -22,7 +20,7 @@
 
         }
 
-        input { 
+        input {
             padding: 15px;
             font-size: 40px;
             display: block;
@@ -44,6 +42,7 @@
             margin-right: auto;
             margin-bottom: 20px;
             display:block;
+            font-family: American Typewriter;
             }
 
         #main-heading {
@@ -69,6 +68,7 @@
             margin-left: auto;
             margin-right: auto;
             width: fit-content;
+            font-family: American Typewriter;
 
         }
 
@@ -81,7 +81,6 @@
             padding-top: 10px;
             padding-bottom: 10px;
             text-align: center;
-            /*background: rgba(0,0,0,0.5);*/
             border-radius: 15px;
         }
 
@@ -99,6 +98,7 @@
 
         main {
             padding:20px;
+            font-family: American Typewriter;
         }
 
         #sketch-container {
@@ -106,9 +106,25 @@
 
         }
 
+        #gameover {
+            color: white;
+            border-radius: 15px;
+            padding-left: 350px;
+            margin-right: auto;
+            background: rgb(128, 0, 32);
+            font-family: impact;
+        }
+
+        canvas {
+            padding-right: 10px;
+            margin-left: -10px;
+        }
+
+
+
         </style>
 
-        <title>Title</title>
+        <title>Keysanity typing game</title>
     </head>
     <body>
 
@@ -144,7 +160,8 @@
             <form id="form">
                 <input type="text" id="input" class="hide">
             </form>
-
+            <button type="button" class="hide" id ="refresh" onClick="window.location.reload();">REFRESH PAGE</button>
+            <h1 id="gameover"></h1>
         </main>
 
 
@@ -168,31 +185,26 @@
 
                 function setup() {
                     frameRate(25); // slow down frame rate
-                     createCanvas(1400, 500); // CANVAS
+                     createCanvas(windowWidth, 500); // CANVAS
 
-
-
-                    for (var i = 0; i<=16; i++){ // for every index less than or equal to 8
+                    for (var i = 0; i<=16; i++){ // for every index less than or equal to 16
                        spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
                     }
 
-                    x = 150;
-                    y = 150;
-                    img = loadImage('gold.gif'); // gold
+                    x = windowWidth-3000; // sprite x value
+                    y = 150; // sprite y value
+                    img = loadImage('gold.gif'); // gold image
 
-
-                    // bg = loadImage('https://t4.ftcdn.net/jpg/02/39/45/37/360_F_239453726_6rjXgbVs6RLXaxPU2eG11UKjLV2aMomJ.jpg'); // load background image
-                    bg = loadImage('bg1.gif');
+                    bg = loadImage('bg1.gif'); // load background image
                 }
 
 
                 function draw() {
-                    x = constrain(x,150,width-175);
+                    x = constrain(x,150,width-175); // prevent sprite from going past a certain x value
 
-                    background(255);
-                    background(bg);
-                    image(spriteImages[frameCount % 16], x, y, 200, 200);
-                    image(img, 1090, 125,200,200);
+                    background(bg); // background image
+                    image(spriteImages[frameCount % 16], x, y, 200, 200); // sprite
+                    image(img, windowWidth-300, 125,200,200); // gold
 
                 }
 
@@ -200,7 +212,7 @@
 
 
 
-                
+
                 var startGameButton = document.getElementById("button"); // store BUTTON element as a variable
                 var statsContent = document.getElementById("stats"); // store STATS element as a variable
                 var input = document.getElementById("input"); // store INPUT element as a variable
@@ -208,17 +220,17 @@
                 var textDisplay = document.getElementById("text-display"); // store TEXT DISPLAY element as a variable
                 var form = document.getElementById("form"); // VIEW THE INPUT LOGIC
                 var mainContent = document.getElementById("main-content"); // store MAIN CONTENT class as a variable
-                var timeDisplay = document.getElementById("time-display") // store TIME DISPLAY span as a variable
-                var scoreDisplay = document.getElementById("score-display") // store SCORE DISPLAY span as a variable
-                var wpmDisplay = document.getElementById("wpm-display") // store WPM DISPLAY span as a variable
-
+                var timeDisplay = document.getElementById("time-display"); // store TIME DISPLAY span as a variable
+                var scoreDisplay = document.getElementById("score-display"); // store SCORE DISPLAY span as a variable
+                var wpmDisplay = document.getElementById("wpm-display"); // store WPM DISPLAY span as a variable
+               var refresh = document.getElementById("refresh"); // BUTTON REFRESH
 
                 // state of the game
                 var state = {
                     currentWord: "", // current word
                     score: 0, // score
                     timeElapsed: 0, // time elapsed
-                    gameLength: 120, // 60 secs
+                    gameLength: 120, // 120 secs
 
                 };
 
@@ -228,6 +240,7 @@
                     }
 
                     console.log(getRandomWord()); // console.log the random word
+
 
                     // show next random word
                     function nextWord(){
@@ -275,11 +288,15 @@
                             // check if game has ended
                             if(state.timeElapsed === state.gameLength){ // IF time elapsed is equal to game length (when time is up)
 
-                            // when game ended, alert player WPM and score
-                                alert("GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent);
+                            // when game ended, show player WPM and score
+                                document.getElementById("gameover").innerHTML = "GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent;
 
-                            // refresh the page
-                                window.location.reload();
+                            refresh.className = ""; // show BUTTON to refresh the page
+                            statsContent.className = "hide"; // hide stats
+                            textDisplay.className = "hide"; // hide text display
+                            form.className = "hide"; // hide input box
+                            mainContent.className = "hide"; // hide words typed
+
                             }
 
 
@@ -337,8 +354,8 @@
 
                     var span; // create different span variable with different color based on the situation, blank span variable
 
-                    if(isCorrect){
-                        // if correct, add the word to the list with green background
+                   // if user types correctly
+                    if(isCorrect || isCorrect + " "){
                         span = createWordSpan("greenyellow", userInput); // show user's input as green text WITH user's input as the content
 
                         // add 1 to score
@@ -348,8 +365,7 @@
 
                     }
 
-                    else { // if user type incorrect answer
-                        // if input is incorrect, add the word to the list with red background
+                    else { // if user types incorrectly
                         span = createWordSpan("red", userInput); // show user's input as red text WITH user's input as the content
 
                     }
@@ -364,20 +380,6 @@
                     showStats(); // calling showStats function
                 });
 
-
-
-
-
-
-
-
-
-
-
-
         </script>
     </body>
 </html>
-
-
-

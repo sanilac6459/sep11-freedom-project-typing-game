@@ -18,7 +18,11 @@
             }
 
             function draw() {
+<<<<<<< HEAD
               background(176, 224, 230);
+=======
+              background(0, 71, 119);
+>>>>>>> a24c31e9c37f4f778fef6e1725fbbc1f4492481e
 
               // TEXT
               stroke(0)
@@ -32,7 +36,8 @@
               for (let i = 0; i < textY.length; i++) {
 
                noStroke()
-                fill(15, 174, 189)
+                fill(145, 174, 202)
+                textFont('Roboto')
                 text("keysanity", textX[i] - 400, textY[i]);
                 text("keysanity", textX[i] - 200 , textY[i]);
                 text("keysanity", textX[i] - 50, textY[i]);
@@ -59,20 +64,21 @@
 
              // welcoming message
 
-              textSize(50);
+              textSize(70);
+              textFont('Bangers')
               fill(255);
               stroke(0)
               strokeWeight(3);
-              text("Welcome to KEYSANITY!", 750, 300)
+              text("Welcome to KEYSANITY!", 750, 380)
 
 
-              textSize(20);
+              textSize(30);
               fill(255);
-              text("Instructions: Type word exactly as shown then press enter/return to proceed", 690, 380)
+              text("Instructions: Type word exactly as shown then press enter/return to proceed", 600, 460)
 
-              textSize(20);
+              textSize(30);
               fill(255);
-              text("Press spacebar, then click the start button", 840, 450)
+              text("Press spacebar, then click the start button", 780, 530)
 
             }
 
@@ -84,4 +90,3 @@
                   location.replace("https://sanilac6459.github.io/sep11-freedom-project-typing-game/main/index.html") // directs them to main page where they start the game
                 }
               }
-
