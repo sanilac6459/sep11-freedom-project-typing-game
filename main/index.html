@@ -355,7 +355,7 @@
                     var span; // create different span variable with different color based on the situation, blank span variable
 
                    // if user types correctly
-                    if(isCorrect || isCorrect + " "){
+                    if(isCorrect){
                         span = createWordSpan("greenyellow", userInput); // show user's input as green text WITH user's input as the content
 
                         // add 1 to score
@@ -364,6 +364,7 @@
                         x+=10 // SPRITE moves to the right by 10 pixels
 
                     }
+
 
                     else { // if user types incorrectly
                         span = createWordSpan("red", userInput); // show user's input as red text WITH user's input as the content
