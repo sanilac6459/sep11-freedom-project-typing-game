@@ -350,7 +350,7 @@
                             }
 
                     // check if input is correct
-                    var isCorrect = userInput === state.currentWord; // whether user's input IS EQUAL to the current word OR NOT
+                    var isCorrect = userInput.trim() === state.currentWord; // whether user's input IS EQUAL to the current word OR NOT
 
                     var span; // create different span variable with different color based on the situation, blank span variable
 
