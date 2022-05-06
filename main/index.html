@@ -15,8 +15,8 @@
             color: white;
             /*background-image: url("https://i.pinimg.com/originals/f7/0b/dd/f70bdd8c08f479a16519e8319b51b46b.gif");*/
             /*background-image: url("http://test.ultralinx.co/wp-content/uploads/2020/03/1_ymlagvx.gif");*/
-            background-image: url("https://i.pinimg.com/originals/78/71/d0/7871d04b9122387d408c2b7b21c79357.gif");
-            /*background-image: url("https://technabob.com/blog/wp-content/uploads/2013/09/fighting_game_animation_1.gif");*/
+            /*background-image: url("https://i.pinimg.com/originals/78/71/d0/7871d04b9122387d408c2b7b21c79357.gif");*/
+            background-image: url("https://technabob.com/blog/wp-content/uploads/2013/09/fighting_game_animation_1.gif");
             display: block;
             background-size: 100% 130%;
 
@@ -205,7 +205,7 @@
 
 
                 function draw() {
-                    x = constrain(x,150,width-175); // prevent sprite from going past a certain x value
+                    x = constrain(x,150,width-175); // prevent sprite from going past the canvas
 
                     background(bg); // background image
                     image(spriteImages[frameCount % 16], x, y, 200, 200); // sprite
