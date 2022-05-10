@@ -186,7 +186,6 @@
                 var y;
 
 
-
                 function setup() {
                     frameRate(25); // slow down frame rate
                      createCanvas(windowWidth, 500); // CANVAS
@@ -210,17 +209,21 @@
 
                     // background(bg); // background image
                     clear();
+
+                    // grass platform
                     rectMode(CENTER);
-                    fill(255);
-                    rect(0, 350, width+2050, 10);
+                    stroke(64, 145, 108)
+                    fill(64, 145, 108);
+                    rect(0, 350, width+2090, 50);
+                    stroke(127, 85, 57)
+                    fill(156, 102, 68)
+                    rect(0, 660, width+2090, 590);
+
+
                     image(spriteImages[frameCount % 16], x, y, 200, 200); // sprite
                     image(img, windowWidth-300, 125,200,200); // gold
 
                 }
-
-
-
-
 
 
                 var startGameButton = document.getElementById("button"); // store BUTTON element as a variable
@@ -235,6 +238,7 @@
                 var wpmDisplay = document.getElementById("wpm-display"); // store WPM DISPLAY span as a variable
                 var refresh = document.getElementById("refresh"); // BUTTON REFRESH
 
+
                 // everything is set to 0 when user first enter our game
                 var state = {
                     currentWord: "", // current word
@@ -243,6 +247,7 @@
                     gameLength: 120, // 120 secs
 
                 };
+
 
                     // generate random words from the string of words
                     function getRandomWord(){
@@ -272,7 +277,6 @@
                     }
 
 
-
                     // calculate numbers for timer, wpm, and score
                     function showStats(){
                         // time remaining
@@ -297,54 +301,43 @@
 
                             // check if game has ended
                             if(state.timeElapsed === state.gameLength){ // when time is up
+                               // game ends, show player WPM and score
+                               document.getElementById("gameover").innerHTML = "GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent;
 
-                            // game ends, show player WPM and score
-                                document.getElementById("gameover").innerHTML = "GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent;
-
-                            refresh.className = ""; // show BUTTON to refresh the page
-                            statsContent.className = "hide"; // hide stats
-                            textDisplay.className = "hide"; // hide text display
-                            form.className = "hide"; // hide input box
-                            mainContent.className = "hide"; // hide words typed
-
+                               refresh.className = ""; // show BUTTON to refresh the page
+                               statsContent.className = "hide"; // hide stats
+                               textDisplay.className = "hide"; // hide text display
+                               form.className = "hide"; // hide input box
+                               mainContent.className = "hide"; // hide words typed
                             }
-
 
                         }, 1000);
 
                     }
 
 
-
-
                 // WHEN BUTTON IS CLICKED
                 startGameButton.addEventListener("click", function(event){ // if button is clicked, function runs
                     event.preventDefault(); // prevent just in case it triggers some default behavior on browser
 
-
                     // hide the button
                     startGameButton.className = "hide"; // set button class name to 'hide'
-
 
                     // show the stats
                     statsContent.className = ""; // set stats class name to an empty string to remove the "hide" class
 
-
                     // show the input field
                     input.className = ""; // set input class name to an empty string to remove the "hide" class
 
-
                     // focus on input field
                     input.focus(); // player doesn't have to click on input field to start typing, auto-focused
-
 
                     // show the word
                     nextWord(); // calling nextWord function
 
                     // start the timer
                     startClock(); // call startClock FUNCTION
-                })
-
+                });
 
 
                 // WHEN USER SUBMITS INPUT
@@ -368,20 +361,18 @@
                     if(isCorrect){
                         span = createWordSpan("greenyellow", userInput); // show user's input as green text WITH user's input as the content
 
-                        // add 1 to score
                         state.score += 1; // score increases by 1
 
-                        x+=20 // SPRITE moves to the right by 10 pixels
+                        x+=20 // SPRITE moves to the right by 20 pixels
 
                     }
-
 
                     else { // if user types incorrectly
                         span = createWordSpan("red", userInput); // show user's input as red text WITH user's input as the content
 
                     }
 
-                     mainContent.appendChild(span); // pass in newly created span element to the function
+                    mainContent.appendChild(span); // pass in newly created span element to the function
 
                     // clear user input
                     input.value = ""; // set the value property of the input to an empty string
