@@ -18,7 +18,7 @@
             }
 
             function draw() {
-              background(0, 71, 119);
+              background(0, 180, 216);
 
               // TEXT
               stroke(0)
@@ -31,8 +31,8 @@
             // text's height increases
               for (let i = 0; i < textY.length; i++) {
 
-               noStroke()
-                fill(145, 174, 202)
+                noStroke()
+                fill(144, 224, 239)
                 textFont('Roboto')
                 text("keysanity", textX[i] - 400, textY[i]);
                 text("keysanity", textX[i] - 200 , textY[i]);
@@ -74,7 +74,7 @@
 
               textSize(30);
               fill(255);
-              text("Press spacebar, then click the start button", 780, 530)
+              text("To begin, press spacebar, then click the start button", 750, 530)
 
             }
 
