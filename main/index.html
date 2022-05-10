@@ -201,14 +201,18 @@
 
                     // spriteImage = loadImage('https://www.piskelapp.com/static/resources/home/features/feature-open-source@2x.gif')
 
-                    bg = loadImage('bg1.gif'); // load background image
+                    // bg = loadImage('bg1.gif'); // load background image
                 }
 
 
                 function draw() {
                     x = constrain(x,150,width-175); // prevent sprite from going past the canvas
 
-                    background(bg); // background image
+                    // background(bg); // background image
+                    clear();
+                    rectMode(CENTER);
+                    fill(255);
+                    rect(1030, 350, width, 10);
                     image(spriteImages[frameCount % 16], x, y, 200, 200); // sprite
                     image(img, windowWidth-300, 125,200,200); // gold
 
@@ -367,7 +371,7 @@
                         // add 1 to score
                         state.score += 1; // score increases by 1
 
-                        x+=10 // SPRITE moves to the right by 10 pixels
+                        x+=20 // SPRITE moves to the right by 10 pixels
 
                     }
 
