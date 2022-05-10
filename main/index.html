@@ -15,9 +15,10 @@
             color: white;
             /*background-image: url("https://i.pinimg.com/originals/f7/0b/dd/f70bdd8c08f479a16519e8319b51b46b.gif");*/
             /*background-image: url("http://test.ultralinx.co/wp-content/uploads/2020/03/1_ymlagvx.gif");*/
-            background-image: url("https://i.pinimg.com/originals/78/71/d0/7871d04b9122387d408c2b7b21c79357.gif");
+            /*background-image: url("https://i.pinimg.com/originals/78/71/d0/7871d04b9122387d408c2b7b21c79357.gif");*/
+            background-image: url("https://technabob.com/blog/wp-content/uploads/2013/09/fighting_game_animation_1.gif");
             display: block;
-            background-size : 100% 100%;
+            background-size: 100% 130%;
 
         }
 
@@ -111,6 +112,7 @@
             color: white;
             border-radius: 15px;
             padding-left: 350px;
+            margin-left: auto;
             margin-right: auto;
             background: rgb(128, 0, 32);
             font-family: impact;
@@ -189,19 +191,21 @@
                      createCanvas(windowWidth, 500); // CANVAS
 
                     for (var i = 0; i<=16; i++){ // for every index less than or equal to 16
-                       spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
+                      spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
                     }
 
                     x = windowWidth-3000; // sprite x value
                     y = 150; // sprite y value
                     img = loadImage('gold.gif'); // gold image
 
+                    // spriteImage = loadImage('https://www.piskelapp.com/static/resources/home/features/feature-open-source@2x.gif')
+
                     bg = loadImage('bg1.gif'); // load background image
                 }
 
 
                 function draw() {
-                    x = constrain(x,150,width-175); // prevent sprite from going past a certain x value
+                    x = constrain(x,150,width-175); // prevent sprite from going past the canvas
 
                     background(bg); // background image
                     image(spriteImages[frameCount % 16], x, y, 200, 200); // sprite
@@ -224,9 +228,9 @@
                 var timeDisplay = document.getElementById("time-display"); // store TIME DISPLAY span as a variable
                 var scoreDisplay = document.getElementById("score-display"); // store SCORE DISPLAY span as a variable
                 var wpmDisplay = document.getElementById("wpm-display"); // store WPM DISPLAY span as a variable
-               var refresh = document.getElementById("refresh"); // BUTTON REFRESH
+                var refresh = document.getElementById("refresh"); // BUTTON REFRESH
 
-                // state of the game
+                // everything is set to 0 when user first enter our game
                 var state = {
                     currentWord: "", // current word
                     score: 0, // score
@@ -264,10 +268,10 @@
 
 
 
-                    // calculate stats
+                    // calculate numbers for timer, wpm, and score
                     function showStats(){
                         // time remaining
-                        timeDisplay.textContent = (state.gameLength - state.timeElapsed) // game length - time elapsed
+                        timeDisplay.textContent = (state.gameLength - state.timeElapsed)
 
                         // score
                         scoreDisplay.textContent = state.score // show current score
@@ -287,9 +291,9 @@
                             showStats(); // call showStats FUNCTION
 
                             // check if game has ended
-                            if(state.timeElapsed === state.gameLength){ // IF time elapsed is equal to game length (when time is up)
+                            if(state.timeElapsed === state.gameLength){ // when time is up
 
-                            // when game ended, show player WPM and score
+                            // game ends, show player WPM and score
                                 document.getElementById("gameover").innerHTML = "GAME OVER! " + "your WPM is: " + wpmDisplay.textContent + " your SCORE is: " + scoreDisplay.textContent;
 
                             refresh.className = ""; // show BUTTON to refresh the page
