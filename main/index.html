@@ -10,6 +10,13 @@
         <style>
             /* CSS */
 
+        /*h1 {*/
+        /*    text-align: center;*/
+        /*}*/
+
+
+
+
         body {
             font-weight: bold;
             color: white;
@@ -110,9 +117,10 @@
         }
 
         #gameover {
+            text-align: center;
             color: white;
             border-radius: 15px;
-            padding-left: 350px;
+            /*padding-left: 350px;*/
             margin-left: auto;
             margin-right: auto;
             background: rgb(128, 0, 32);
@@ -188,7 +196,7 @@
 
                 function setup() {
                     frameRate(25); // slow down frame rate
-                     createCanvas(windowWidth, 500); // CANVAS
+                     createCanvas(windowWidth, 685); // CANVAS
 
                     for (var i = 0; i<=16; i++){ // for every index less than or equal to 16
                       spriteImages.push(loadImage('Run ('+i+').png')); // push loaded run images into spriteImages array
@@ -215,9 +223,11 @@
                     stroke(64, 145, 108)
                     fill(64, 145, 108);
                     rect(0, 350, width+2090, 50);
+
+                    rectMode(CORNER)
                     stroke(127, 85, 57)
                     fill(156, 102, 68)
-                    rect(0, 660, width+2090, 590);
+                    rect(0, 370, width+2090, 687);
 
 
                     image(spriteImages[frameCount % 16], x, y, 200, 200); // sprite
@@ -244,7 +254,7 @@
                     currentWord: "", // current word
                     score: 0, // score
                     timeElapsed: 0, // time elapsed
-                    gameLength: 120, // 120 secs
+                    gameLength: 5, // 120 secs
 
                 };
 
