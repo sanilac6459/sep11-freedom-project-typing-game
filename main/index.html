@@ -268,8 +268,10 @@
                     // show list of the words ALREADY TYPED
                     function createWordSpan(color, content){ // this function would display a list of user's typed word and color of the typed words based on if they typed it correctly
                         var span = document.createElement("span"); // create a box for the list of user's typed words
-                        var style = "color: " + color; // span element should have a text color that matches with the given color argument
-                        span.setAttribute("style", style); // set the text color to the span
+
+                        // sets typed words in certain style and color based on user's spelling
+                        var style = "color: " + color;
+                        span.setAttribute("style", style);
                         span.setAttribute("class", "typed-word");
 
                         span.textContent = content; // set content of the span to the content argument
