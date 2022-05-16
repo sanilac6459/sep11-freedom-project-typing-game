@@ -18,6 +18,7 @@
             }
 
             function draw() {
+
               background(0, 180, 216);
 
               // TEXT
