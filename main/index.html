@@ -336,10 +336,11 @@
 
 
                 // WHEN USER PRESSED ENTER/RETURN TO SUBMITS INPUT
-                form.addEventListener("submit", function(event){
+                form.addEventListener("keyup", function(event){
                     event.preventDefault(); // prevent just in case it triggers glitch or any default behavior on browser
 
                     // when the user enter a input
+                    if(event.code == "Space") {
                         var userInput = input.value; // user input is stored for checking spelling
 
                         // if user didnt enter a input, do nothing
@@ -375,7 +376,7 @@
                     // show the next word and update wpm, score, and timer
                     nextWord(); // call nextWord function
                     showStats(); // calling showStats function
-                });
+                }});
 
         </script>
     </body>
